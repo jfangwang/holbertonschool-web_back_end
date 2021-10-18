@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Basic annotation: to_str"""
+"""Basic annotation: define_variables"""
 
 a: int = 1
 pi: float = 3.14

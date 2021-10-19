@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-"""Basic annotation: basic async syntax"""
+"""Basic annotation: basic async syntax, have to use the random module"""
 import asyncio
 import random
 

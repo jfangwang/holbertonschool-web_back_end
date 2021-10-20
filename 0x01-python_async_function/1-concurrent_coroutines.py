@@ -16,6 +16,5 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
         delay_list.append(wait_random(max_delay))
     for item in asyncio.as_completed(delay_list):
         """Waits until item is complete and stores into sorted list"""
-        result = await item
-        sorted_list.append(result)
+        sorted_list.append(await item)
     return sorted_list

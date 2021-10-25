@@ -3,7 +3,7 @@
 BasicCache = __import__('base_caching').BaseCaching
 
 
-class FIFOCache(BasicCache):
+class LIFOCache(BasicCache):
     """Create a class BasicCache that inherits from
     BaseCaching and is a caching system"""
     def __init__(self):
@@ -15,7 +15,7 @@ class FIFOCache(BasicCache):
         the item value for the key"""
         if key and item:
             if len(self.cache_data) >= BasicCache.MAX_ITEMS:
-                popped_key = self.data_order.pop(0)
+                popped_key = self.data_order.pop()
                 del self.cache_data[popped_key]
                 print("DISCARD: {}".format(popped_key))
             self.cache_data[key] = item

@@ -26,6 +26,7 @@ class LRUCache(BasicCache):
                 for a in self.data_order:
                     if self.data_order[a] < self.lowest_rank[1]:
                         self.lowest_rank = [a, self.data_order[a]]
+                print("DISCARD: {}".format(self.lowest_rank[0]))
                 del self.data_order[self.lowest_rank[0]]
                 del self.cache_data[self.lowest_rank[0]]
             self.cache_data[key] = item

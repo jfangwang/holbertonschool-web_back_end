@@ -46,7 +46,7 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, any]:
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        page_count = int(len(self.dataset()) / page_size)
+        page_count = math.ceil((len(self.dataset()) / page_size))
         if page + 1 < page_count:
             next_page = page + 1
         else:

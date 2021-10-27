@@ -8,4 +8,4 @@ def index_range(page, page_size):
     if page and page_size:
         start = (page - 1) * page_size
         end = start + page_size
-        return(start, end)
+        return (start, end)

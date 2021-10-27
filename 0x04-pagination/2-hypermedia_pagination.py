@@ -34,6 +34,7 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """Takes in two integers"""
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
         start, end = index_range(page, page_size)
@@ -44,6 +45,7 @@ class Server:
         return output[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, any]:
+        """Returns page count, next page, data, prev page"""
         page_count = math.ceil((len(self.dataset()) / page_size))
         if page < page_count:
             next_page = page + 1

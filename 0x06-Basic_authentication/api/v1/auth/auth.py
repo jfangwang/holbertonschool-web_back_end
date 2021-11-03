@@ -10,6 +10,8 @@ class Auth():
         """Checks if path is valid"""
         if path is None or excluded_paths is None:
             return True
+        if path[-1] != '/':
+            path = path + '/'
         if path in excluded_paths:
             return False
         return True

@@ -20,12 +20,10 @@ class Auth():
         """Returns the flask request object"""
         if request is None:
             return None
-        if request.authorization is None:
+        if request.headers.get("Authorization") is None:
             return None
-        return request.authorization
+        return request.headers.get("Authorization")
 
     def current_user(self, request=None) -> TypeVar('User'):
         """returns the flask request object"""
-        if request is None:
-            return None
-        return request
+        return None

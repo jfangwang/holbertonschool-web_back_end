@@ -54,5 +54,5 @@ class BasicAuth(Auth):
             for user in all_users:
                 if user.is_valid_password(user_pwd):
                     return user
-        except Exception(e):
+        except Exception:
             return None

@@ -52,7 +52,7 @@ class BasicAuth(Auth):
         try:
             all_users = User.search({'email': user_email})
             for user in all_users:
-            if user.is_valid_password(user_pwd):
-                return user
+                if user.is_valid_password(user_pwd):
+                    return user
         except Exception(e):
             return None

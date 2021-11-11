@@ -15,13 +15,13 @@ def login() -> str:
     """
     email = request.form.get('email')
     if email is None:
-        return jsonify({ "error": "email missing" }), 400
+        return jsonify({"error": "email missing"}), 400
     password = request.form.get('password')
     if password is None:
-        return jsonify({ "error": "password missing" }), 400
+        return jsonify({"error": "password missing"}), 400
     user = User.search({"email": email})
     if user == []:
-        return jsonify({ "error": "no user found for this email" }), 404
+        return jsonify({"error": "no user found for this email"}), 404
     if user[0].is_valid_password(password):
         """if password is correct with email"""
         from api.v1.app import auth
@@ -31,4 +31,4 @@ def login() -> str:
         user_info.set_cookie(getenv("SESSION_NAME"), ses_id)
         return user_info
     else:
-        return jsonify({ "error": "wrong password" }), 401
+        return jsonify({"error": "wrong password"}), 401

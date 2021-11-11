@@ -3,6 +3,7 @@
 from flask import request
 from typing import List, TypeVar
 from api.v1.auth.auth import Auth
+from models.user import User
 import uuid
 
 
@@ -28,5 +29,6 @@ class SessionAuth(Auth):
         """returns a User instance based on a cookie value"""
         if request is None:
             return None
-        cookie = self.session_cookie(request)
-        return self.user_id_for_session_id(cookie)
+        cookie = str(self.session_cookie(request))
+        user_id = self.user_id_for_session_id(cookie)
+        return User.get(user_id)

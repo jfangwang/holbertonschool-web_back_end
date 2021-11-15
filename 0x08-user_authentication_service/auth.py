@@ -67,3 +67,15 @@ class Auth:
         except Exception as e:
             return None
         return None
+
+    def get_user_from_session_id(self, session_id: str) -> User:
+        """returns the corresponding User or None"""
+        if session_id is None:
+            return None
+        try:
+            self._db.find_user_by_(session_id=session_id)
+        except Exception(NoResultFound):
+            return None
+        except Exception as e:
+            return None
+        return self._db.find_user_by_(session_id=session_id)

@@ -85,8 +85,10 @@ def get_reset_password_token():
 def update_password():
     """Update Password"""
     user = request.form.get("email")
-    pas = request.form.get("password")
-    token = request.form.get("token")
+    pas = request.form.get("new_password")
+    token = request.form.get("reset_token")
+    if user is None or token is None:
+        abort(403)
     try:
         AUTH.update_password(token, pas)
     except ValueError:

@@ -42,3 +42,14 @@ class DB:
         if self._session.query(User).filter_by(**kwargs).first() is None:
             raise NoResultFound
         return self._session.query(User).filter_by(**kwargs).first()
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """locate the user to update, then will update the user’s attributes
+        as passed in the method’s arguments then commit changes to the
+        database."""
+        user = self.find_user_by(id=user_id)
+        for k, v in kwargs.items():
+            if hasattr(user, k) is False:
+                raise ValueError
+            setattr(user, k, v)
+        self._session.commit()

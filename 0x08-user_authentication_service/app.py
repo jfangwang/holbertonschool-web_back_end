@@ -52,10 +52,10 @@ def logout():
     if user is None:
         abort(403)
     AUTH.destroy_session(user.id)
-    return redirect("/", code=200)
+    return redirect("/")
 
 
-@app.route("/", methods=["GET"], strict_slashes="False")
+@app.route("/profile", methods=["GET"], strict_slashes="False")
 def profile():
     """find the user. If the user exist, respond with a 200 HTTP
     status and the following JSON payload"""

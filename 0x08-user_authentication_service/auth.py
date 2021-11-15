@@ -83,6 +83,8 @@ class Auth:
         try:
             self._db.update_user(user_id=user_id,
                                  session_id=None)
+        except NoResultFound:
+            return None
         except Exception as e:
             return None
         return None

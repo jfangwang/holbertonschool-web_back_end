@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Flask App"""
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 from auth import Auth
 app = Flask(__name__)
 AUTH = Auth()
@@ -35,10 +35,10 @@ def login():
     if AUTH.valid_login(user, pas):
         session = AUTH.create_session(email)
         output = jsonify({"email": user, "message": "logged in"})
-        output.set_cookie('session_id': session)
+        output.set_cookie('session_id', session)
         return output
     else:
-        flask.abort(401)
+        abort(401)
 
 
 if __name__ == "__main__":

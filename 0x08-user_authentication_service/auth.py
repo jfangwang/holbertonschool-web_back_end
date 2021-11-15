@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Authentication"""
 import bcrypt
+import uuid
 from sqlalchemy.ext.declarative import declarative_base
 from user import Base, User
 from sqlalchemy.orm.exc import NoResultFound
@@ -45,3 +46,8 @@ class Auth:
         except Exception as e:
             return False
         return False
+
+    def _generate_uuid(self) -> str:
+        """return a string representation of a new UUID.
+        Use the uuid module."""
+        return str(uuid4())

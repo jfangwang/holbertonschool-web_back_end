@@ -73,12 +73,10 @@ class Auth:
         if session_id is None:
             return None
         try:
-            self._db.find_user_by_(session_id=session_id)
-        except Exception(NoResultFound):
-            return None
+            return self._db.find_user_by_(session_id=session_id)
         except Exception as e:
             return None
-        return self._db.find_user_by_(session_id=session_id)
+        return None
 
     def destroy_session(self, used_id: int) -> None:
         """updates the corresponding user’s session ID to None"""

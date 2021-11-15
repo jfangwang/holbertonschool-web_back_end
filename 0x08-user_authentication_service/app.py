@@ -72,15 +72,13 @@ def profile():
 def get_reset_password_token():
     """Logging in feature"""
     user = request.form.get("email")
-    pas = request.form.get("password")
-
-    if AUTH.valid_login(user, pas):
-        session = AUTH.create_session(user)
-        output = jsonify({"email": user, "message": "logged in"})
-        output.set_cookie('session_id', session)
-        return output
-    else:
-        abort(401)
+    if user is None:
+        abort(403)
+    try:
+        token = AUTH.get_reset_password_token(user)
+    except ValueError:
+        abort(403)
+    return jsonify({"email": user, "reset_token": token}), 200
 
 
 if __name__ == "__main__":

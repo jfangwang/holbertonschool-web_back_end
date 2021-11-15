@@ -33,7 +33,7 @@ def login():
     pas = request.form.get("password")
 
     if AUTH.valid_login(user, pas):
-        session = AUTH.create_session(email)
+        session = AUTH.create_session(user)
         output = jsonify({"email": user, "message": "logged in"})
         output.set_cookie('session_id', session)
         return output

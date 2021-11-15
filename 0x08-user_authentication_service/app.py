@@ -52,7 +52,20 @@ def logout():
     if user is None:
         abort(403)
     AUTH.destroy_session(user.id)
-    return redirect("/")
+    return redirect("/", code=200)
+
+
+@app.route("/", methods=["GET"], strict_slashes="False")
+def profile():
+    """find the user. If the user exist, respond with a 200 HTTP
+    status and the following JSON payload"""
+    session = request.cookies.get("session_id")
+    if session is None:
+        abort(403)
+    user = AUTH.get_user_from_session_id(session)
+    if user is None:
+        abort(403)
+    return jsonify({"email": "{}".format(user.email)}), 200
 
 
 if __name__ == "__main__":

@@ -68,5 +68,20 @@ def profile():
     return jsonify({"email": "{}".format(user.email)}), 200
 
 
+@app.route("/reset_password", methods=["POST"], strict_slashes="False")
+def get_reset_password_token():
+    """Logging in feature"""
+    user = request.form.get("email")
+    pas = request.form.get("password")
+
+    if AUTH.valid_login(user, pas):
+        session = AUTH.create_session(user)
+        output = jsonify({"email": user, "message": "logged in"})
+        output.set_cookie('session_id', session)
+        return output
+    else:
+        abort(401)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")

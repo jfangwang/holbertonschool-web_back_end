@@ -45,4 +45,3 @@ class Auth:
         except Exception as e:
             return False
         return False
-

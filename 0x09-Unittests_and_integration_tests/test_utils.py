@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Flask App"""
 import unittest
+from unittest.mock import patch
 from parameterized import parameterized, parameterized_class
 
 

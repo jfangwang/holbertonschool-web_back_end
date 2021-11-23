@@ -48,20 +48,22 @@ class TestMemoize(unittest.TestCase):
     def test_memoize(self):
         """test"""
         class TestClass:
-
+            """test class wrapper"""
             def a_method(self):
+                """a_method"""
                 return 42
 
             @memoize
             def a_property(self):
+                """property"""
                 return self.a_method()
 
-        with patch.object(TestClass, 'a_method', return_value=42) as a_method:
+        with patch.object(TestClass, 'a_method', return_value=42) as method:
             test = TestClass()
             test.a_property
             sample = test.a_property
             self.assertEqual(test.a_property, sample)
-            a_method.assert_called_once()
+            method.assert_called_once()
 
 
 if __name__ == '__main__':

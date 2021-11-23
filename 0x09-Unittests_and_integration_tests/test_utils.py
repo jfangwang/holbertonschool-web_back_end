@@ -29,5 +29,20 @@ class TestAccessNestedMap(unittest.TestCase):
             self.assertEqual(e.exception, KeyError)
 
 
+class TestGetJson(unittest.TestCase):
+    """class to test get json in utils.py"""
+    @parameterized.expand([
+                          ("http://example.com", {"payload": True}),
+                          ("http://holberton.io", {"payload": False})
+                          ])
+    @patch('test_utils.get_json')
+    def test_get_json(self, url, payload, get):
+        """get json test case"""
+        get.return_value = payload
+        output = get_json(url)
+        self.assertEqual(output, payload)
+
+
+
 if __name__ == '__main__':
     unittest.main()

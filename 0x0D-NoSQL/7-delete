@@ -1,0 +1,2 @@
+// MongoDB show databases
+db.school.deleteMany({ "name": "Holberton school" })

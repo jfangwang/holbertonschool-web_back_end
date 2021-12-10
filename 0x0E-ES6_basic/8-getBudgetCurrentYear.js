@@ -9,6 +9,7 @@ function getCurrentYear() {
       [`gdp-${getCurrentYear()}`]: gdp,
       [`capita-${getCurrentYear()}`]: capita,
     };
+
     return budget;
   }
   

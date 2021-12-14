@@ -5,7 +5,7 @@ import uploadPhoto from './5-photo-reject';
 function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)])
     .then((results) => {
-      let output = {};
+      const output = {};
       let temp = {};
       results.forEach((result) => {
         if (result.status === 'fulfilled') {
@@ -20,6 +20,13 @@ function handleProfileSignup(firstName, lastName, fileName) {
       });
       return output;
     })
-    .catch(() => {});
+    .catch((error) => {
+      let temp = {};
+      temp = {
+        status: 'rejected',
+        value: error.toString(),
+      };
+      return temp;
+    });
 }
 export default handleProfileSignup;

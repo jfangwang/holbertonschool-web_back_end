@@ -3,10 +3,11 @@
 function guardrail(mathFunction) {
   const queue = [];
   try {
-    queue.push(mathFunction(), 'Guardrail was prcessed');
+    queue.push(mathFunction());
   } catch (error) {
-    queue.push(`Error: ${error.toString()}`, 'Guardrail was processed');
+    queue.push(error.toString());
   }
+  queue.push('Guardrail was processed')
   return queue;
 }
 export default guardrail;

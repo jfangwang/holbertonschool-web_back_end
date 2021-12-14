@@ -1,5 +1,5 @@
 // return an object on success and error object on failure
-import { uploadPhoto, createUser } from './utils.js';
+import { uploadPhoto, createUser } from './utils';
 
 async function asyncUploadUser() {
   try {
@@ -7,14 +7,14 @@ async function asyncUploadUser() {
     const user = await createUser();
     const output = {
       photo: upload,
-      user: user,
-    }
+      user,
+    };
     return output;
   } catch (error) {
     const output = {
       photo: null,
       user: null,
-    }
+    };
     return output;
   }
 }

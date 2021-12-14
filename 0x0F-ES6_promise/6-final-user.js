@@ -12,7 +12,7 @@ function handleProfileSignup(firstName, lastName, fileName) {
         } else {
           output.push({
             status: data[i].status,
-            value: `Error: ${data[i].reason}`,
+            value: `Error: ${data[i].reason.message}`,
           });
         }
       }

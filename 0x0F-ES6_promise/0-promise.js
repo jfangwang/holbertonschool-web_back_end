@@ -1,7 +1,8 @@
+// Simple get response from api in js
 function getResponseFromAPI() {
-	let promise = new Promise((resolve) => {
-		resolve("Promise received");
-	});
-	return promise
+  const promise = new Promise((resolve) => {
+    resolve('Promise received');
+  });
+  return promise;
 }
 export default getResponseFromAPI;

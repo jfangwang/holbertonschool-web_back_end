@@ -1,14 +1,12 @@
 // Implement a class named Currency
 export default class Currency {
   constructor(code, name) {
-    if (typeof code !== 'string') throw TypeError('code must be a string');
-    if (typeof name !== 'string') throw TypeError('name must be a number');
     this._code = code;
     this._name = name;
   }
 
   displayFullCurrency() {
-    return `${name} (${code})`;
+    return `${this.name} (${this.code})`;
   }
 
   get code() {

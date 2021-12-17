@@ -7,8 +7,8 @@ export default class Car {
   }
 
   cloneCar() {
-    const Species = this.constructor;
-    const clone = new Species(this._brand, this._motor, this._color);
+    const obj = this.constructor;
+    const clone = new obj(this._brand, this._motor, this._color);
     return clone;
   }
 }

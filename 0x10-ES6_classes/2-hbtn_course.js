@@ -3,7 +3,7 @@ export default class HolbertonCourse {
   constructor(name, length, students) {
     if (typeof name !== 'string') throw TypeError('name must be a string');
     if (typeof length !== 'number') throw TypeError('length must be a number');
-    if (Object.getPrototypeOf(students) !== Array.prototype) throw TypeError('students must be an array');
+    if (!Array.isArray(students)) throw TypeError('students must be an array');
     students.forEach((person) => {
       if (typeof person !== 'string') throw TypeError('students must be an array of strings');
     });
@@ -35,7 +35,7 @@ export default class HolbertonCourse {
   }
 
   set students(nstudents) {
-    if (Object.getPrototypeOf(nstudents) !== Array.prototype) throw TypeError('students must be an array');
+    if (!Array.isArray(nstudents)) throw TypeError('students must be an array');
     nstudents.forEach((person) => {
       if (typeof person !== 'string') throw TypeError('students must be an array of strings');
     });

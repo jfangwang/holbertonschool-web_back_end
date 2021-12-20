@@ -7,9 +7,7 @@ export default function cleanSet(set, startString) {
       output += `${word.substring(startString.length)}-`;
     }
   });
-  if (output[output.length - 1]) {
-    output = output.substring(0, output.length - 1);
-  }
+  output = output.substring(0, output.length - 1);
   if (startString === '') {
     output = '';
   }

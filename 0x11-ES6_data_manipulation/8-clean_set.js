@@ -6,7 +6,7 @@ export default function cleanSet(set, startString) {
     return (output);
   }
   set.forEach((word) => {
-    if (word.startsWith(startString)) {
+    if (word && word.startsWith(startString)) {
       output += `${word.substring(startString.length)}-`;
     }
   });

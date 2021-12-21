@@ -2,7 +2,7 @@
 // values that start with a specific string (startString)
 export default function cleanSet(set, startString) {
   let output = '';
-  if (startString === '' || startString.length === 0) {
+  if (!startString || startString.length === 0) {
     return (output);
   }
   set.forEach((word) => {

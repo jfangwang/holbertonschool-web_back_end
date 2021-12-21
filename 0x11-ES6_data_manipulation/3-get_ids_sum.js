@@ -1,10 +1,7 @@
 // Implement a function getStudentIdsSum
 export default function getStudentIdsSum(array) {
-  let count = 0;
   if (Array.isArray(array)) {
-    array.forEach((item) => {
-      count += item.id;
-    });
+    return (array.reduce((sum, item) => sum + item.id, 0));
   }
-  return (count);
+  return (0);
 }
